@@ -1,0 +1,11 @@
+{
+	"TestCases": {
+		"Test": {
+			"Name": "Login",
+			"TestModule": "Login Dashboard",
+			"TestType": "Smoke Test",
+			"TestExecution": "Manual",
+			"_id": "1"
+		}
+	}
+}
