@@ -126,6 +126,7 @@ public class AssertionMethods extends SelectElementByType implements BaseTest
 	public boolean isElementEnabled(String accessType, String accessName)
 	{
 		element = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
+		System.out.println("Element enabled");
 		return element.isEnabled();
 	}
 	

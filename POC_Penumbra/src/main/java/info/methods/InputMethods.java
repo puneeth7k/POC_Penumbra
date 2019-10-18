@@ -5,10 +5,15 @@ import java.util.List;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 
 public class InputMethods extends SelectElementByType implements BaseTest
 {
+	ExtentReports extent;
+	ExtentTest logger;
+	
 	//SelectElementByType eleType= new SelectElementByType();
 	private WebElement dropdown =null;
 	private Select selectList=null;
@@ -32,6 +37,7 @@ public class InputMethods extends SelectElementByType implements BaseTest
 	{
 		wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
 		driver.findElement(getelementbytype(accessType, accessName)).clear();
+		
 	}
 	
 	/** Method to select element from Dropdown by type

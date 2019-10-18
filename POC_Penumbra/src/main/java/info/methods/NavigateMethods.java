@@ -118,6 +118,19 @@ public class NavigateMethods extends SelectElementByType implements BaseTest
 		action.moveToElement(element).perform();
 	}
 	
+	/** Method to hover on element and click
+	 * @param accessType : String : Locator type (id, name, class, xpath, css)
+	 * @param accessName : String : Locator value
+	 */
+	public void hoverOverElementandclick(String accessType, String accessName)
+	{
+		Actions action = new Actions(driver);
+		element = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
+		System.out.println("Mouse over and clicked");
+		action.moveToElement(element).perform();
+		element.click();
+	}
+	
 	/** Method to find the count hover on element
 	 * @param accessType : String : Locator type (id, name, class, xpath, css)
 	 * @param accessName : String : Locator value
@@ -127,7 +140,6 @@ public class NavigateMethods extends SelectElementByType implements BaseTest
 	{
 		List<WebElement> totalLinks = driver.findElements(By.xpath(accessName));
 		int totalLinkSize = totalLinks.size();	
-		System.out.println("Elements count is:-"+ totalLinkSize);
 		return totalLinkSize;
 	}
 	
@@ -144,26 +156,31 @@ public class NavigateMethods extends SelectElementByType implements BaseTest
 		Thread.sleep(500);
 	}
 	
-	
-	public void scrollToElement2(WebElement element)
+	/** Method to scroll page to particular element
+	 * @param accessType : String : Locator type (id, name, class, xpath, css)
+	 * @param accessName : String : Locator value
+	 * @throws InterruptedException 
+	 */
+	public void scrollToElementandclick(String accessType, String accessName) 
 	{
-		Actions action = new Actions(driver);
-	    action.moveToElement(element);
+		element = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
+		JavascriptExecutor executor = (JavascriptExecutor)driver;
+		executor.executeScript("arguments[0].scrollIntoView(true);", element);
+		element.click();
 	}
 	
-	/** Method to scroll page to top or end
+	
+	 /** Method to scroll page to top or end
 	 * @param to : String : Scroll page to Top or End
 	 * @throws Exception
 	 */
-	public void scrollPage(String to) throws Exception
+	public void scrollPage(String to)
 	{
 		JavascriptExecutor executor = (JavascriptExecutor)driver;
 		if (to.equals("end"))
 			executor.executeScript("window.scrollTo(0,Math.max(document.documentElement.scrollHeight,document.body.scrollHeight,document.documentElement.clientHeight));");
 		else if (to.equals("top"))
             executor.executeScript("window.scrollTo(Math.max(document.documentElement.scrollHeight,document.body.scrollHeight,document.documentElement.clientHeight),0);");
-		else
-			throw new Exception("Exception : Invalid Direction (only scroll \"top\" or \"end\")");
 	}
 	
 	/**Method to switch to new window */
@@ -228,6 +245,7 @@ public class NavigateMethods extends SelectElementByType implements BaseTest
     public void switchToDefaultContent()
     {
     	driver.switchTo().defaultContent();
+    	System.out.println("default window");
     }
     
     

@@ -40,4 +40,11 @@ public class Retry implements IRetryAnalyzer {
                 ExtentTestManager.getTest().addBase64ScreenShot(base64Screenshot));
     }
 
+    public void extendReportsPassOperations (ITestResult iTestResult) {
+        Object testClass = iTestResult.getInstance();
+        WebDriver webDriver = ((DriverUtil) testClass).getDefaultDriver();
+        String base64Screenshot = "data:image/png;base64,"+((TakesScreenshot)webDriver).getScreenshotAs(OutputType.BASE64);
+        ExtentTestManager.getTest().log(LogStatus.PASS,"Test Passed",
+                ExtentTestManager.getTest().addBase64ScreenShot(base64Screenshot));
+    }
 }

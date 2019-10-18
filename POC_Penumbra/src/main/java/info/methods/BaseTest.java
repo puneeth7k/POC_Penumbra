@@ -1,5 +1,7 @@
 package info.methods;
 
+import info.stepdefinitions.PredefinedStepDefinitions;
+
 public interface BaseTest
 {
 	MiscMethods miscmethodObj = new MiscMethods();
@@ -13,4 +15,5 @@ public interface BaseTest
 	ScreenShotMethods screenshotObj = new ScreenShotMethods();
 	xpaths xpath = new xpaths();
 	getRandomNumberInRange ran = new getRandomNumberInRange();
+	PredefinedStepDefinitions predef = new PredefinedStepDefinitions();
 }

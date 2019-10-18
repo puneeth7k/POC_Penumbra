@@ -42,6 +42,7 @@ public class ProgressMethods extends SelectElementByType implements BaseTest
 		By byEle = getelementbytype(accessType, accessName);
 		WebDriverWait wait = (new WebDriverWait(driver,Integer.parseInt(duration)*1000));
 		wait.until(ExpectedConditions.elementToBeClickable(byEle));
+		System.out.println("Element clickable");
 	}
 	
 }
