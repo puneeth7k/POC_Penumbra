@@ -20,7 +20,7 @@ import utils.listeners.TestListener;
 @Listeners({ TestListener.class })
 @Epic("Regression Tests")
 @Feature("Login Tests")
-public class LoginTests extends DriverUtil implements BaseTest{
+public class LoginTests  extends DriverUtil implements BaseTest{
 
 	
 	HomePage homePage = new HomePage(driver,wait);
